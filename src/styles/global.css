@@ -1,0 +1,225 @@
+:root {
+  --kleur-groen-donker: #2f5d45;
+  --kleur-groen: #4a8768;
+  --kleur-groen-licht: #e7f2ea;
+  --kleur-koraal: #ec8b5e;
+  --kleur-koraal-donker: #d97341;
+  --kleur-crème: #fbf7ef;
+  --kleur-wit: #ffffff;
+  --kleur-tekst: #2b2a26;
+  --kleur-tekst-zacht: #5c5a52;
+  --kleur-rand: #e7e0d3;
+  --schaduw: 0 10px 30px -12px rgba(47, 93, 69, 0.18);
+  --radius: 18px;
+  --breedte-max: 1180px;
+  --font-koptekst: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--kleur-tekst);
+  background: var(--kleur-crème);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-koptekst);
+  font-weight: 600;
+  line-height: 1.15;
+  margin: 0 0 0.5em;
+  color: var(--kleur-groen-donker);
+}
+
+h1 { font-size: clamp(2.2rem, 4vw, 3.2rem); }
+h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); }
+h3 { font-size: 1.3rem; }
+
+p { margin: 0 0 1em; }
+
+.container {
+  max-width: var(--breedte-max);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.sectie {
+  padding: 64px 0;
+}
+
+.sectie--klein {
+  padding: 40px 0;
+}
+
+.sectie--groen {
+  background: var(--kleur-groen-licht);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--kleur-groen-licht);
+  color: var(--kleur-groen-donker);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 999px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+.knop {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 26px;
+  border-radius: 999px;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 1rem;
+  border: 2px solid transparent;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  cursor: pointer;
+}
+
+.knop--primair {
+  background: var(--kleur-koraal);
+  color: #fff;
+  box-shadow: var(--schaduw);
+}
+
+.knop--primair:hover {
+  background: var(--kleur-koraal-donker);
+  transform: translateY(-2px);
+}
+
+.knop--groen {
+  background: var(--kleur-groen);
+  color: #fff;
+}
+
+.knop--groen:hover {
+  background: var(--kleur-groen-donker);
+  transform: translateY(-2px);
+}
+
+.knop--outline {
+  background: transparent;
+  border-color: var(--kleur-groen);
+  color: var(--kleur-groen-donker);
+}
+
+.knop--outline:hover {
+  background: var(--kleur-groen-licht);
+}
+
+.kaart {
+  background: var(--kleur-wit);
+  border-radius: var(--radius);
+  border: 1px solid var(--kleur-rand);
+  padding: 28px;
+}
+
+.kaarten-grid {
+  display: grid;
+  gap: 24px;
+}
+
+.grid-2 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+.grid-3 { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+.grid-4 { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+
+.tekst-centreren { text-align: center; }
+
+.smal {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.eyebrow {
+  color: var(--kleur-koraal-donker);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.78rem;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.lijst-check {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.lijst-check li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.lijst-check li::before {
+  content: '✓';
+  color: var(--kleur-groen);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5em 0;
+}
+
+th, td {
+  text-align: left;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--kleur-rand);
+}
+
+th {
+  color: var(--kleur-groen-donker);
+  font-family: var(--font-koptekst);
+}
+
+blockquote {
+  border-left: 4px solid var(--kleur-koraal);
+  margin: 1.5em 0;
+  padding: 0.5em 0 0.5em 1.4em;
+  font-style: italic;
+  color: var(--kleur-tekst-zacht);
+}
+
+code {
+  background: var(--kleur-groen-licht);
+  padding: 2px 6px;
+  border-radius: 6px;
+  font-size: 0.9em;
+}
+
+@media (max-width: 700px) {
+  .sectie { padding: 44px 0; }
+}

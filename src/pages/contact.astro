@@ -1,0 +1,45 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  titel="Contact"
+  beschrijving="Neem contact op met SMSDieet.nl via info@smsdieet.nl."
+>
+  <section class="sectie">
+    <div class="container smal tekst-centreren contact-blok">
+      <span class="eyebrow">Contact</span>
+      <h1>Vraag, tip of samenwerking?</h1>
+      <p>
+        Stuur gerust een e-mail. We reageren zo snel mogelijk, meestal binnen
+        een paar werkdagen.
+      </p>
+      <a class="knop knop--primair contact-mail" href="mailto:info@smsdieet.nl">
+        info@smsdieet.nl
+      </a>
+      <p class="contact-noot">
+        Liever geen contactformulier: een e-mail komt rechtstreeks bij ons
+        binnen.
+      </p>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .contact-blok {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .contact-mail {
+    font-size: 1.15rem;
+    margin: 18px 0 10px;
+  }
+
+  .contact-noot {
+    font-size: 0.85rem;
+    color: var(--kleur-tekst-zacht);
+  }
+</style>

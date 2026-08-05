@@ -1,0 +1,272 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  titel="Tools & calculators"
+  beschrijving="Gratis tools voor gezond afvallen: bereken je BMI, dagelijkse calorieënbehoefte, streefgewicht en aanbevolen waterinname."
+>
+  <section class="sectie">
+    <div class="container smal tekst-centreren">
+      <span class="eyebrow">Tools</span>
+      <h1>Handige calculators voor gezond afvallen</h1>
+      <p>
+        Vier gratis tools om inzicht te krijgen in je gewicht, energiebehoefte
+        en waterinname. De uitkomsten zijn indicaties, geen medisch advies.
+        Twijfel je? Overleg dan met een arts of diëtist.
+      </p>
+    </div>
+  </section>
+
+  <section class="sectie tools-sectie">
+    <div class="container tools-grid">
+      <div class="kaart tool-kaart" id="bmi-tool">
+        <h2>BMI-calculator</h2>
+        <p class="tool-uitleg">Bereken je Body Mass Index op basis van lengte en gewicht.</p>
+        <div class="veld-rij">
+          <label for="bmi-lengte">Lengte (cm)</label>
+          <input type="number" id="bmi-lengte" min="100" max="250" placeholder="bv. 170" />
+        </div>
+        <div class="veld-rij">
+          <label for="bmi-gewicht">Gewicht (kg)</label>
+          <input type="number" id="bmi-gewicht" min="30" max="300" placeholder="bv. 75" />
+        </div>
+        <button class="knop knop--groen" id="bmi-bereken">Bereken BMI</button>
+        <p class="tool-resultaat" id="bmi-resultaat" aria-live="polite"></p>
+      </div>
+
+      <div class="kaart tool-kaart" id="calorie-tool">
+        <h2>Calorieënbehoefte</h2>
+        <p class="tool-uitleg">
+          Schat je dagelijkse energiebehoefte op basis van de Mifflin-St Jeor
+          formule.
+        </p>
+        <div class="veld-rij">
+          <label for="cal-geslacht">Geslacht</label>
+          <select id="cal-geslacht">
+            <option value="vrouw">Vrouw</option>
+            <option value="man">Man</option>
+          </select>
+        </div>
+        <div class="veld-rij">
+          <label for="cal-leeftijd">Leeftijd (jaar)</label>
+          <input type="number" id="cal-leeftijd" min="14" max="100" placeholder="bv. 35" />
+        </div>
+        <div class="veld-rij">
+          <label for="cal-lengte">Lengte (cm)</label>
+          <input type="number" id="cal-lengte" min="100" max="250" placeholder="bv. 170" />
+        </div>
+        <div class="veld-rij">
+          <label for="cal-gewicht">Gewicht (kg)</label>
+          <input type="number" id="cal-gewicht" min="30" max="300" placeholder="bv. 75" />
+        </div>
+        <div class="veld-rij">
+          <label for="cal-activiteit">Beweegniveau</label>
+          <select id="cal-activiteit">
+            <option value="1.2">Weinig tot geen beweging</option>
+            <option value="1.375">Licht actief (1-3x per week sporten)</option>
+            <option value="1.55" selected>Matig actief (3-5x per week sporten)</option>
+            <option value="1.725">Zeer actief (6-7x per week sporten)</option>
+            <option value="1.9">Extreem actief (fysiek zwaar werk of topsport)</option>
+          </select>
+        </div>
+        <button class="knop knop--groen" id="cal-bereken">Bereken calorieënbehoefte</button>
+        <p class="tool-resultaat" id="cal-resultaat" aria-live="polite"></p>
+      </div>
+
+      <div class="kaart tool-kaart" id="streef-tool">
+        <h2>Streefgewicht-indicatie</h2>
+        <p class="tool-uitleg">
+          Bekijk het gezonde gewichtsbereik (BMI 18,5 – 25) dat bij jouw
+          lengte past.
+        </p>
+        <div class="veld-rij">
+          <label for="streef-lengte">Lengte (cm)</label>
+          <input type="number" id="streef-lengte" min="100" max="250" placeholder="bv. 170" />
+        </div>
+        <button class="knop knop--groen" id="streef-bereken">Bereken gezond gewichtsbereik</button>
+        <p class="tool-resultaat" id="streef-resultaat" aria-live="polite"></p>
+      </div>
+
+      <div class="kaart tool-kaart" id="water-tool">
+        <h2>Waterinname-calculator</h2>
+        <p class="tool-uitleg">
+          Een indicatie van je dagelijkse waterbehoefte op basis van je
+          lichaamsgewicht.
+        </p>
+        <div class="veld-rij">
+          <label for="water-gewicht">Gewicht (kg)</label>
+          <input type="number" id="water-gewicht" min="30" max="300" placeholder="bv. 75" />
+        </div>
+        <div class="veld-rij">
+          <label for="water-activiteit">Beweegniveau</label>
+          <select id="water-activiteit">
+            <option value="0">Weinig beweging</option>
+            <option value="300" selected>Gemiddeld actief</option>
+            <option value="600">Sport intensief / warm weer</option>
+          </select>
+        </div>
+        <button class="knop knop--groen" id="water-bereken">Bereken waterinname</button>
+        <p class="tool-resultaat" id="water-resultaat" aria-live="polite"></p>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 26px;
+  }
+
+  .tool-kaart h2 {
+    font-size: 1.25rem;
+  }
+
+  .tool-uitleg {
+    color: var(--kleur-tekst-zacht);
+    font-size: 0.92rem;
+  }
+
+  .veld-rij {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 14px;
+  }
+
+  .veld-rij label {
+    font-weight: 600;
+    font-size: 0.88rem;
+    color: var(--kleur-groen-donker);
+  }
+
+  .veld-rij input,
+  .veld-rij select {
+    padding: 11px 14px;
+    border-radius: 10px;
+    border: 1px solid var(--kleur-rand);
+    font-size: 1rem;
+    font-family: var(--font-body);
+    background: var(--kleur-crème);
+  }
+
+  .veld-rij input:focus,
+  .veld-rij select:focus {
+    outline: 2px solid var(--kleur-groen);
+    outline-offset: 1px;
+  }
+
+  .tool-kaart button {
+    width: 100%;
+    justify-content: center;
+    margin-top: 6px;
+  }
+
+  .tool-resultaat {
+    margin: 16px 0 0;
+    min-height: 1.2em;
+    font-weight: 700;
+    color: var(--kleur-groen-donker);
+    background: var(--kleur-groen-licht);
+    border-radius: 10px;
+    padding: 12px 14px;
+  }
+
+  .tool-resultaat:empty {
+    display: none;
+  }
+</style>
+
+<script>
+  function toNummer(waarde: string): number | null {
+    const n = parseFloat(waarde.replace(',', '.'));
+    return Number.isFinite(n) && n > 0 ? n : null;
+  }
+
+  // BMI calculator
+  const bmiKnop = document.getElementById('bmi-bereken');
+  bmiKnop?.addEventListener('click', () => {
+    const lengteCm = toNummer((document.getElementById('bmi-lengte') as HTMLInputElement).value);
+    const gewicht = toNummer((document.getElementById('bmi-gewicht') as HTMLInputElement).value);
+    const resultaat = document.getElementById('bmi-resultaat')!;
+
+    if (!lengteCm || !gewicht) {
+      resultaat.textContent = 'Vul een geldige lengte en gewicht in.';
+      return;
+    }
+
+    const lengteM = lengteCm / 100;
+    const bmi = gewicht / (lengteM * lengteM);
+    let categorie = '';
+    if (bmi < 18.5) categorie = 'ondergewicht';
+    else if (bmi < 25) categorie = 'gezond gewicht';
+    else if (bmi < 30) categorie = 'overgewicht';
+    else categorie = 'obesitas';
+
+    resultaat.textContent = `Jouw BMI is ${bmi.toFixed(1)} — dit valt in de categorie "${categorie}".`;
+  });
+
+  // Calorieënbehoefte
+  const calKnop = document.getElementById('cal-bereken');
+  calKnop?.addEventListener('click', () => {
+    const geslacht = (document.getElementById('cal-geslacht') as HTMLSelectElement).value;
+    const leeftijd = toNummer((document.getElementById('cal-leeftijd') as HTMLInputElement).value);
+    const lengte = toNummer((document.getElementById('cal-lengte') as HTMLInputElement).value);
+    const gewicht = toNummer((document.getElementById('cal-gewicht') as HTMLInputElement).value);
+    const activiteit = parseFloat((document.getElementById('cal-activiteit') as HTMLSelectElement).value);
+    const resultaat = document.getElementById('cal-resultaat')!;
+
+    if (!leeftijd || !lengte || !gewicht) {
+      resultaat.textContent = 'Vul leeftijd, lengte en gewicht in.';
+      return;
+    }
+
+    // Mifflin-St Jeor
+    let bmr = 10 * gewicht + 6.25 * lengte - 5 * leeftijd;
+    bmr += geslacht === 'man' ? 5 : -161;
+
+    const totaal = Math.round(bmr * activiteit);
+    const onderhoud = Math.round(bmr);
+    const tekort = Math.round(totaal - 500);
+
+    resultaat.innerHTML = `Rustverbranding: ca. ${onderhoud} kcal.<br />Dagelijkse behoefte bij dit beweegniveau: ca. ${totaal} kcal.<br />Voor geleidelijk gewichtsverlies: richt op ca. ${tekort} kcal per dag.`;
+  });
+
+  // Streefgewicht
+  const streefKnop = document.getElementById('streef-bereken');
+  streefKnop?.addEventListener('click', () => {
+    const lengteCm = toNummer((document.getElementById('streef-lengte') as HTMLInputElement).value);
+    const resultaat = document.getElementById('streef-resultaat')!;
+
+    if (!lengteCm) {
+      resultaat.textContent = 'Vul een geldige lengte in.';
+      return;
+    }
+
+    const lengteM = lengteCm / 100;
+    const min = 18.5 * lengteM * lengteM;
+    const max = 25 * lengteM * lengteM;
+
+    resultaat.textContent = `Een gezond gewichtsbereik bij ${lengteCm} cm ligt tussen ${min.toFixed(0)} kg en ${max.toFixed(0)} kg (BMI 18,5–25).`;
+  });
+
+  // Waterinname
+  const waterKnop = document.getElementById('water-bereken');
+  waterKnop?.addEventListener('click', () => {
+    const gewicht = toNummer((document.getElementById('water-gewicht') as HTMLInputElement).value);
+    const extra = parseFloat((document.getElementById('water-activiteit') as HTMLSelectElement).value);
+    const resultaat = document.getElementById('water-resultaat')!;
+
+    if (!gewicht) {
+      resultaat.textContent = 'Vul een geldig gewicht in.';
+      return;
+    }
+
+    const basisMl = gewicht * 33 + extra;
+    const liters = (basisMl / 1000).toFixed(1);
+
+    resultaat.textContent = `Indicatieve waterbehoefte: ca. ${liters} liter per dag (inclusief vocht uit voeding).`;
+  });
+</script>

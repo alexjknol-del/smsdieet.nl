@@ -1,0 +1,69 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+interface Props {
+  titel: string;
+  beschrijving?: string;
+  afbeelding?: string;
+}
+
+const {
+  titel,
+  beschrijving = 'SMSDieet.nl helpt je op weg met gezond afvallen: praktische artikelen, tools en eerlijke informatie over voeding en leefstijl.',
+  afbeelding = '/afbeeldingen/schrijfster-fleur.svg',
+} = Astro.props;
+
+const paginaTitel = titel.includes('SMSDieet') ? titel : `${titel} | SMSDieet.nl`;
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/afbeeldingen/favicon.svg" />
+    <link rel="canonical" href={canonicalUrl} />
+    <title>{paginaTitel}</title>
+    <meta name="description" content={beschrijving} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={paginaTitel} />
+    <meta property="og:description" content={beschrijving} />
+    <meta property="og:image" content={new URL(afbeelding, Astro.site)} />
+    <meta property="og:locale" content="nl_NL" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <a href="#hoofdinhoud" class="skip-link">Ga naar hoofdinhoud</a>
+    <Header />
+    <main id="hoofdinhoud">
+      <slot />
+    </main>
+    <Footer />
+    <style is:global>
+      .skip-link {
+        position: absolute;
+        left: -999px;
+        top: 0;
+        background: var(--kleur-groen-donker);
+        color: #fff;
+        padding: 10px 16px;
+        z-index: 100;
+        border-radius: 0 0 8px 0;
+      }
+      .skip-link:focus {
+        left: 0;
+      }
+    </style>
+  </body>
+</html>

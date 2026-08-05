@@ -1,0 +1,38 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ArtikelKaart from '../../components/ArtikelKaart.astro';
+import { getCollection } from 'astro:content';
+
+const artikelen = (await getCollection('nieuws')).sort(
+  (a, b) => b.data.datum.valueOf() - a.data.datum.valueOf()
+);
+---
+
+<Layout
+  titel="Nieuws en artikelen"
+  beschrijving="Alle artikelen van SMSDieet.nl over gezond afvallen, voeding, beweging en leefstijl."
+>
+  <section class="sectie">
+    <div class="container">
+      <span class="eyebrow">Nieuws</span>
+      <h1>Artikelen over gezond afvallen</h1>
+      <p class="smal" style="margin-bottom: 40px;">
+        Praktische, onderbouwde artikelen over voeding, beweging en leefstijl.
+        Geen wondermiddelen, wel bruikbare inzichten die je direct kunt
+        toepassen.
+      </p>
+
+      <div class="kaarten-grid grid-3">
+        {artikelen.map((artikel) => (
+          <ArtikelKaart
+            titel={artikel.data.titel}
+            samenvatting={artikel.data.samenvatting}
+            href={`/nieuws/${artikel.slug}`}
+            datum={artikel.data.datum}
+            categorie={artikel.data.categorie}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

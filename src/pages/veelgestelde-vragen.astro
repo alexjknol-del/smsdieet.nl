@@ -1,0 +1,114 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const vragen = [
+  {
+    vraag: 'Hoeveel kilo kan ik gezond per week afvallen?',
+    antwoord:
+      'Een richtlijn die veel gebruikt wordt, is 0,5 tot 1 kilo per week. Sneller afvallen gaat vaak ten koste van spiermassa en verhoogt de kans op het jojo-effect. Rustiger afvallen is meestal beter vol te houden en blijft ook beter staan.',
+  },
+  {
+    vraag: 'Moet ik calorieën tellen om af te vallen?',
+    antwoord:
+      'Niet per se. Calorieën tellen kan inzicht geven, maar werkt voor veel mensen op de lange termijn niet vol te houden. Een regelmatig eetpatroon met voldoende eiwitten, vezels en gezonde vetten geeft vaak hetzelfde resultaat, zonder dat je alles hoeft af te wegen.',
+  },
+  {
+    vraag: 'Waarom val ik niet af, terwijl ik minder eet?',
+    antwoord:
+      'Dit gebeurt vaker dan je denkt. Te weinig eten kan de stofwisseling vertragen en zorgt ervoor dat het lichaam vetreserves juist vasthoudt. Voldoende en regelmatig eten, verdeeld over de dag, werkt in veel gevallen beter dan fors minderen.',
+  },
+  {
+    vraag: 'Zijn voedingssupplementen nodig om af te vallen?',
+    antwoord:
+      'Supplementen zijn nooit een vervanging voor gezonde voeding, maar kunnen als aanvulling wel ondersteunen, bijvoorbeeld bij het op peil houden van vitaminen en mineralen tijdens een periode met een lagere calorie-inname. Raadpleeg bij twijfel een arts of diëtist.',
+  },
+  {
+    vraag: 'Hoe voorkom ik dat de kilo\'s terugkomen na mijn dieet?',
+    antwoord:
+      'Bouw na de afvalfase een periode in waarin je geleidelijk terug went aan een breder voedingspatroon, in plaats van in één keer terug te vallen in oude gewoontes. Blijf daarnaast regelmatig eten en bewegen. Lees ook ons artikel over het voorkomen van het jojo-effect.',
+  },
+  {
+    vraag: 'Is elke dag hetzelfde eten wat je klaarmaakt saai?',
+    antwoord:
+      'Een vast eetritme betekent niet per se hetzelfde eten. Veel eetschema\'s werken met een voedingslijst waar je zelf uit kiest, zodat je kunt variëren binnen een vaste structuur. Zie ook onze receptenpagina voor inspiratie.',
+  },
+  {
+    vraag: 'Kan ik gewoon meeëten met mijn gezin tijdens het afvallen?',
+    antwoord:
+      'In veel gevallen wel. Door porties en verhoudingen aan te passen, kun je vaak dezelfde basis eten als de rest van het gezin. Dat maakt een aanpak makkelijker vol te houden dan apart moeten koken.',
+  },
+];
+---
+
+<Layout
+  titel="Veelgestelde vragen"
+  beschrijving="Antwoorden op veelgestelde vragen over gezond afvallen, voeding en het voorkomen van het jojo-effect."
+>
+  <section class="sectie">
+    <div class="container smal tekst-centreren">
+      <span class="eyebrow">Veelgestelde vragen</span>
+      <h1>Antwoorden op de vragen die we het vaakst krijgen</h1>
+    </div>
+  </section>
+
+  <section class="sectie sectie--klein">
+    <div class="container smal faq-lijst">
+      {vragen.map((item) => (
+        <details class="faq-item">
+          <summary>{item.vraag}</summary>
+          <p>{item.antwoord}</p>
+        </details>
+      ))}
+    </div>
+  </section>
+
+  <section class="sectie sectie--groen">
+    <div class="container smal tekst-centreren">
+      <h2>Staat je vraag er niet bij?</h2>
+      <p>Stuur een mail en we denken mee.</p>
+      <a class="knop knop--groen" href="/contact">Naar contact</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .faq-lijst {
+    display: grid;
+    gap: 14px;
+  }
+
+  .faq-item {
+    background: var(--kleur-wit);
+    border: 1px solid var(--kleur-rand);
+    border-radius: 14px;
+    padding: 18px 22px;
+  }
+
+  .faq-item summary {
+    font-weight: 700;
+    font-family: var(--font-koptekst);
+    color: var(--kleur-groen-donker);
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .faq-item summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-item summary::after {
+    content: '+';
+    float: right;
+    font-size: 1.3rem;
+    color: var(--kleur-koraal-donker);
+  }
+
+  .faq-item[open] summary::after {
+    content: '−';
+  }
+
+  .faq-item p {
+    margin: 12px 0 0;
+    color: var(--kleur-tekst-zacht);
+  }
+</style>

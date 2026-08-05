@@ -1,0 +1,140 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { schrijfster } from '../data/persona';
+---
+
+<Layout
+  titel="Over SMSDieet.nl"
+  beschrijving="Wat SMSDieet.nl is, waar het platform voor staat en wie erachter zit."
+>
+  <section class="sectie">
+    <div class="container smal tekst-centreren">
+      <span class="eyebrow">Over het platform</span>
+      <h1>Gezond afvallen, zonder gedoe</h1>
+      <p>
+        SMSDieet.nl is opgericht vanuit één simpele gedachte: afvallen hoeft
+        niet ingewikkeld te zijn. Er is al genoeg verwarring over diëten,
+        supplementen en hypes. Wij zoeken uit wat er echt toe doet en
+        vertalen dat naar artikelen en tools die je meteen kunt gebruiken.
+      </p>
+    </div>
+  </section>
+
+  <section class="sectie sectie--groen">
+    <div class="container kaarten-grid grid-3">
+      <div class="kaart">
+        <h3>Wat we doen</h3>
+        <p>
+          We schrijven over voeding, beweging en leefstijl in relatie tot
+          gezond afvallen. Altijd met uitleg over het "waarom", niet alleen
+          het "wat".
+        </p>
+      </div>
+      <div class="kaart">
+        <h3>Wat we niet doen</h3>
+        <p>
+          Geen crashdiëten promoten, geen wondermiddelen aanprijzen en geen
+          beloftes die niet waargemaakt kunnen worden.
+        </p>
+      </div>
+      <div class="kaart">
+        <h3>Waar we voor staan</h3>
+        <p>
+          Regelmaat, balans en een aanpak die je op lange termijn volhoudt.
+          Dat is de rode draad in alles wat we publiceren.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sectie">
+    <div class="container">
+      <div class="over-uitleg">
+        <div>
+          <span class="eyebrow">Onze aanpak</span>
+          <h2>Drie pijlers waar elk artikel op is gebouwd</h2>
+          <ul class="lijst-check">
+            <li>
+              <strong>Onderbouwd:</strong> we baseren artikelen op gangbare
+              voedingskundige inzichten en checken twijfelgevallen bij
+              vakmensen.
+            </li>
+            <li>
+              <strong>Praktisch:</strong> elk artikel eindigt met iets dat je
+              die dag nog kunt toepassen.
+            </li>
+            <li>
+              <strong>Realistisch:</strong> we beloven geen 10 kilo in twee
+              weken. Wel een aanpak die vol te houden is.
+            </li>
+          </ul>
+        </div>
+        <div class="kaart">
+          <h3>Vragen of feedback?</h3>
+          <p>
+            Kom je iets tegen dat niet klopt, of wil je iets terugkoppelen?
+            Neem gerust contact op.
+          </p>
+          <a class="knop knop--groen" href="/contact">Naar de contactpagina</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sectie sectie--groen" id="schrijfster">
+    <div class="container persoon-detail">
+      <img
+        src={schrijfster.afbeelding}
+        alt={`Illustratie van ${schrijfster.naam}`}
+        width="220"
+        height="220"
+      />
+      <div>
+        <span class="eyebrow">De schrijfster</span>
+        <h2>{schrijfster.naam}</h2>
+        <p class="persoon-detail__functie">{schrijfster.functie}</p>
+        {schrijfster.langeBio.map((alinea) => <p>{alinea}</p>)}
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .over-uitleg {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+
+  .persoon-detail {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 44px;
+    align-items: center;
+  }
+
+  .persoon-detail img {
+    border-radius: 50%;
+    box-shadow: var(--schaduw);
+  }
+
+  .persoon-detail__functie {
+    color: var(--kleur-koraal-donker);
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+
+  @media (max-width: 860px) {
+    .over-uitleg {
+      grid-template-columns: 1fr;
+    }
+    .persoon-detail {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+    .persoon-detail img {
+      margin: 0 auto;
+    }
+  }
+</style>

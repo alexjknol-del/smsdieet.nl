@@ -1,0 +1,163 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SlincPromo from '../components/SlincPromo.astro';
+import ArtikelKaart from '../components/ArtikelKaart.astro';
+import { getCollection } from 'astro:content';
+import { schrijfster } from '../data/persona';
+
+const artikelen = (await getCollection('nieuws'))
+  .sort((a, b) => b.data.datum.valueOf() - a.data.datum.valueOf())
+  .slice(0, 3);
+---
+
+<Layout titel="SMSDieet.nl — Gezond afvallen, praktisch uitgelegd">
+  <section class="hero">
+    <div class="container hero__inner">
+      <div>
+        <span class="badge">Gezond afvallen platform</span>
+        <h1>Afvallen dat past bij een normale week, geen streng dieet.</h1>
+        <p class="hero__intro">
+          SMSDieet.nl helpt je op weg met heldere artikelen, handige
+          calculators en eerlijke informatie over voeding, beweging en
+          leefstijl. Geen wondermiddelen: wel een aanpak die je volhoudt.
+        </p>
+        <div class="hero__acties">
+          <a class="knop knop--groen" href="/tools">Bereken je BMI</a>
+          <a class="knop knop--outline" href="/nieuws">Lees het laatste nieuws</a>
+        </div>
+      </div>
+      <div class="hero__beeld" aria-hidden="true">
+        <svg viewBox="0 0 360 360" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="180" cy="180" r="170" fill="#e7f2ea"/>
+          <circle cx="180" cy="180" r="130" fill="#fff"/>
+          <path d="M180 90c34 24 50 54 50 82 0 36-24 62-50 62s-50-26-50-62c0-28 16-58 50-82Z" fill="#4a8768"/>
+          <circle cx="255" cy="95" r="22" fill="#ec8b5e"/>
+          <circle cx="90" cy="260" r="16" fill="#ec8b5e" opacity="0.7"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <section class="sectie sectie--groen">
+    <div class="container kaarten-grid grid-3">
+      <div class="kaart">
+        <h3>Praktisch, geen theorie</h3>
+        <p>Artikelen die uitleggen waarom iets werkt, en vooral: wat je er vandaag mee kunt doen.</p>
+      </div>
+      <div class="kaart">
+        <h3>Handige tools</h3>
+        <p>Reken je BMI, dagelijkse calorieënbehoefte en streefgewicht uit met onze gratis calculators.</p>
+      </div>
+      <div class="kaart">
+        <h3>Eerlijk over programma's</h3>
+        <p>We testen en bespreken aanpakken die echt op regelmaat en normaal eten zijn gebaseerd.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sectie">
+    <div class="container">
+      <SlincPromo />
+    </div>
+  </section>
+
+  <section class="sectie">
+    <div class="container">
+      <div class="sectie-kop">
+        <div>
+          <span class="eyebrow">Nieuws</span>
+          <h2>Uitgelichte artikelen</h2>
+        </div>
+        <a class="knop knop--outline" href="/nieuws">Alle artikelen</a>
+      </div>
+      <div class="kaarten-grid grid-3">
+        {artikelen.map((artikel) => (
+          <ArtikelKaart
+            titel={artikel.data.titel}
+            samenvatting={artikel.data.samenvatting}
+            href={`/nieuws/${artikel.slug}`}
+            datum={artikel.data.datum}
+            categorie={artikel.data.categorie}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="sectie sectie--groen">
+    <div class="container persoon-blok">
+      <img src={schrijfster.afbeelding} alt={`Illustratie van ${schrijfster.naam}`} width="160" height="160" />
+      <div>
+        <span class="eyebrow">Wie schrijft er</span>
+        <h2>{schrijfster.naam}</h2>
+        <p>{schrijfster.korteBio}</p>
+        <a class="knop knop--groen" href="/over">Lees meer over SMSDieet.nl</a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .hero {
+    padding: 72px 0 40px;
+  }
+
+  .hero__inner {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+
+  .hero__intro {
+    font-size: 1.15rem;
+    color: var(--kleur-tekst-zacht);
+    max-width: 560px;
+  }
+
+  .hero__acties {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .hero__beeld svg {
+    width: 100%;
+    height: auto;
+  }
+
+  .sectie-kop {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 30px;
+  }
+
+  .persoon-blok {
+    display: flex;
+    gap: 36px;
+    align-items: center;
+  }
+
+  .persoon-blok img {
+    border-radius: 50%;
+    flex-shrink: 0;
+    box-shadow: var(--schaduw);
+  }
+
+  @media (max-width: 860px) {
+    .hero__inner {
+      grid-template-columns: 1fr;
+    }
+    .hero__beeld {
+      max-width: 280px;
+      margin: 0 auto;
+    }
+    .persoon-blok {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+</style>

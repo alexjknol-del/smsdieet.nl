@@ -1,0 +1,84 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SlincPromo from '../../components/SlincPromo.astro';
+import { getCollection } from 'astro:content';
+import { schrijfster } from '../../data/persona';
+
+export async function getStaticPaths() {
+  const artikelen = await getCollection('nieuws');
+  return artikelen.map((artikel) => ({
+    params: { slug: artikel.slug },
+    props: { artikel },
+  }));
+}
+
+const { artikel } = Astro.props;
+const { Content } = await artikel.render();
+const datumTekst = artikel.data.datum.toLocaleDateString('nl-NL', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+---
+
+<Layout titel={artikel.data.titel} beschrijving={artikel.data.samenvatting}>
+  <article class="sectie">
+    <div class="container smal">
+      <a href="/nieuws" class="terug-link">&larr; Alle artikelen</a>
+      <span class="badge">{artikel.data.categorie}</span>
+      <h1>{artikel.data.titel}</h1>
+      <div class="artikel-meta">
+        <img src={schrijfster.afbeelding} alt="" width="36" height="36" />
+        <span>
+          Door <strong>{artikel.data.auteur}</strong> &middot; {datumTekst}
+        </span>
+      </div>
+
+      <div class="artikel-inhoud">
+        <Content />
+      </div>
+    </div>
+  </article>
+
+  <section class="sectie sectie--klein">
+    <div class="container">
+      <SlincPromo compact />
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .terug-link {
+    display: inline-block;
+    margin-bottom: 20px;
+    color: var(--kleur-groen-donker);
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .terug-link:hover {
+    text-decoration: underline;
+  }
+
+  .artikel-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--kleur-tekst-zacht);
+    font-size: 0.9rem;
+    margin: 18px 0 36px;
+  }
+
+  .artikel-meta img {
+    border-radius: 50%;
+  }
+
+  .artikel-inhoud :global(h2) {
+    margin-top: 1.6em;
+  }
+
+  .artikel-inhoud :global(a) {
+    color: var(--kleur-groen-donker);
+    text-decoration: underline;
+  }
+</style>

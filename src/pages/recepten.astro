@@ -1,0 +1,106 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const recepten = [
+  {
+    naam: 'Griekse kom met kip en couscous',
+    categorie: 'Lunch',
+    omschrijving:
+      'Volkoren couscous met gegrilde kip, komkommer, tomaat, rode ui, feta en een scheutje olijfolie. Voedzaam, snel klaar en ook lekker koud mee te nemen.',
+    kcal: '±480 kcal',
+  },
+  {
+    naam: 'Ovenschotel met zalm, broccoli en zoete aardappel',
+    categorie: 'Diner',
+    omschrijving:
+      'Zalmfilet met broccoli en blokjes zoete aardappel uit de oven, op smaak met citroen en kruiden. Vol met omega-3, vezels en eiwitten.',
+    kcal: '±540 kcal',
+  },
+  {
+    naam: 'Overnight oats met bessen en amandel',
+    categorie: 'Ontbijt',
+    omschrijving:
+      "Havermout geweekt in melk of plantaardige drink, met een handvol rood fruit en amandelschaafsel. De avond ervoor klaarmaken, 's ochtends direct eten.",
+    kcal: '±350 kcal',
+  },
+  {
+    naam: 'Linzensoep met groente',
+    categorie: 'Lunch',
+    omschrijving:
+      'Stevige soep van rode linzen, wortel, ui en tomaat. Rijk aan vezels en plantaardige eiwitten, en houdt lang een verzadigd gevoel.',
+    kcal: '±320 kcal',
+  },
+  {
+    naam: 'Wokschotel met kip, paprika en zilvervliesrijst',
+    categorie: 'Diner',
+    omschrijving:
+      'Snelle wok met reepjes kipfilet, paprika, sperziebonen en een lichte sojasaus, geserveerd op zilvervliesrijst.',
+    kcal: '±510 kcal',
+  },
+  {
+    naam: 'Hangop met appel en kaneel',
+    categorie: 'Toetje',
+    omschrijving:
+      'Uitgelekte kwark met stukjes appel, een snufje kaneel en een klein beetje honing. Romig, en een stuk voedzamer dan een kant-en-klaar toetje.',
+    kcal: '±180 kcal',
+  },
+];
+---
+
+<Layout
+  titel="Recepten"
+  beschrijving="Gezonde en makkelijke receptinspiratie voor ontbijt, lunch, diner en toetje, passend bij een voedzaam eetpatroon."
+>
+  <section class="sectie">
+    <div class="container smal tekst-centreren">
+      <span class="eyebrow">Recepten</span>
+      <h1>Inspiratie voor gezond en lekker eten</h1>
+      <p>
+        Afvallen met gezonde voeding betekent niet dat je saai moet eten. Deze
+        receptideeën zijn voedzaam, behapbaar om te koken en passen in een
+        regelmatig eetpatroon.
+      </p>
+    </div>
+  </section>
+
+  <section class="sectie">
+    <div class="container kaarten-grid grid-3">
+      {recepten.map((recept) => (
+        <div class="kaart recept-kaart">
+          <span class="artikel-kaart__categorie">{recept.categorie}</span>
+          <h3>{recept.naam}</h3>
+          <p>{recept.omschrijving}</p>
+          <p class="recept-kaart__kcal">{recept.kcal} per portie (indicatief)</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="sectie sectie--groen">
+    <div class="container smal tekst-centreren">
+      <h2>Op zoek naar een volledig eetschema?</h2>
+      <p>
+        Wil je niet zelf steeds hoeven bedenken wat je eet? Programma's met
+        een vast eetschema en voedingslijst, zoals <a href="https://rachelhulshof.nl/afvallen-met-slinc/" target="_blank" rel="noopener sponsored">Slinc</a>,
+        nemen dat overwegen uit handen.
+      </p>
+      <a class="knop knop--primair" href="/nieuws">Lees onze artikelen over voeding</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .recept-kaart {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .recept-kaart__kcal {
+    margin-top: auto;
+    padding-top: 10px;
+    border-top: 1px solid var(--kleur-rand);
+    font-size: 0.85rem;
+    color: var(--kleur-tekst-zacht);
+  }
+</style>

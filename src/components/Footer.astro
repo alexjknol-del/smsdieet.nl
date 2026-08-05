@@ -1,0 +1,142 @@
+---
+const jaar = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container site-footer__grid">
+    <div class="site-footer__over">
+      <div class="site-header__logo">
+        <svg width="30" height="30" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="17" cy="17" r="17" fill="#e7f2ea"/>
+          <path d="M17 8c4.5 3 6.5 6.7 6.5 10.2C23.5 22.5 20.6 26 17 26s-6.5-3.5-6.5-7.8C10.5 14.7 12.5 11 17 8Z" fill="#4a8768"/>
+        </svg>
+        <span class="site-footer__logotekst">SMS<strong>Dieet</strong></span>
+      </div>
+      <p>
+        SMSDieet.nl is een Nederlands platform over gezond afvallen: praktische
+        artikelen, handige tools en eerlijke informatie over voeding en
+        leefstijl. Geen streng dieet, wel een realistische aanpak.
+      </p>
+    </div>
+
+    <nav class="site-footer__kolom" aria-label="Site navigatie">
+      <h3>Ontdek</h3>
+      <ul>
+        <li><a href="/over">Over het platform</a></li>
+        <li><a href="/nieuws">Nieuws &amp; artikelen</a></li>
+        <li><a href="/recepten">Recepten</a></li>
+        <li><a href="/tools">Tools &amp; calculators</a></li>
+        <li><a href="/partners">Partners</a></li>
+        <li><a href="/veelgestelde-vragen">Veelgestelde vragen</a></li>
+      </ul>
+    </nav>
+
+    <div class="site-footer__kolom">
+      <h3>Contact</h3>
+      <ul>
+        <li><a href="mailto:info@smsdieet.nl">info@smsdieet.nl</a></li>
+        <li><a href="/contact">Contactpagina</a></li>
+      </ul>
+    </div>
+
+    <div class="site-footer__kolom">
+      <h3>Juridisch</h3>
+      <ul>
+        <li><a href="/privacybeleid">Privacybeleid</a></li>
+        <li><a href="/cookiebeleid">Cookiebeleid</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="site-footer__onder container">
+    <p>&copy; {jaar} SMSDieet.nl. Alle rechten voorbehouden.</p>
+    <p class="site-footer__disclaimer">
+      Informatie op dit platform vervangt geen medisch advies. Raadpleeg bij
+      twijfel een arts of diëtist.
+    </p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--kleur-groen-donker);
+    color: #e9f1ec;
+    margin-top: 80px;
+    padding-top: 56px;
+  }
+
+  .site-footer__grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 36px;
+    padding-bottom: 40px;
+  }
+
+  .site-footer .site-header__logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-koptekst);
+    font-size: 1.2rem;
+    margin-bottom: 14px;
+  }
+
+  .site-footer__logotekst strong {
+    color: #f3b78d;
+  }
+
+  .site-footer__over p {
+    color: #cfe0d5;
+    max-width: 340px;
+    font-size: 0.95rem;
+  }
+
+  .site-footer__kolom h3 {
+    color: #fff;
+    font-family: var(--font-koptekst);
+    font-size: 1rem;
+    margin-bottom: 14px;
+  }
+
+  .site-footer__kolom ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 10px;
+  }
+
+  .site-footer__kolom a {
+    color: #cfe0d5;
+    text-decoration: none;
+    font-size: 0.94rem;
+  }
+
+  .site-footer__kolom a:hover {
+    color: #fff;
+    text-decoration: underline;
+  }
+
+  .site-footer__onder {
+    border-top: 1px solid rgba(255,255,255,0.14);
+    padding: 22px 24px 28px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 0.85rem;
+    color: #b7ccbe;
+  }
+
+  @media (max-width: 860px) {
+    .site-footer__grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .site-footer__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

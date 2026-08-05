@@ -1,0 +1,129 @@
+---
+interface Props {
+  compact?: boolean;
+}
+const { compact = false } = Astro.props;
+---
+
+<section class:list={['slinc-promo', { 'slinc-promo--compact': compact }]} aria-labelledby="slinc-titel">
+  <div class="slinc-promo__inner">
+    <div class="slinc-promo__tekst">
+      <span class="badge badge--licht">Onze aanbeveling</span>
+      <h2 id="slinc-titel">Gezond afvallen met normaal eten: wij zijn fan van Slinc</h2>
+      <p>
+        Van alle programma's die we tegenkomen, valt <strong>Slinc</strong> bij ons
+        op. Geen shakes, geen maaltijdvervangers en geen hongergevoel: je eet
+        gewoon zes keer per dag producten uit de supermarkt, verdeeld over een
+        duidelijk schema. Dat maakt het makkelijker om vol te houden dan de
+        meeste strenge diëten.
+      </p>
+      <ul class="lijst-check">
+        <li>Een vast eetritme met zes eetmomenten per dag</li>
+        <li>Je kookt en eet gewoon mee met je gezin</li>
+        <li>Ondersteuning met plantaardige voedingssupplementen</li>
+        <li>Begeleiding door voedingscoach Rachel Hulshof</li>
+      </ul>
+      <div class="slinc-promo__acties">
+        <a
+          class="knop knop--primair"
+          href="https://rachelhulshof.nl/afvallen-met-slinc/"
+          target="_blank"
+          rel="noopener sponsored"
+        >
+          Ontdek Slinc
+        </a>
+        <a
+          class="knop knop--outline"
+          href="https://rachelhulshof.nl/afvallen-met-slinc/"
+          target="_blank"
+          rel="noopener sponsored"
+        >
+          Lees hoe het programma werkt
+        </a>
+      </div>
+      <p class="slinc-promo__disclosure">
+        Transparantie: SMSDieet.nl is geen onderdeel van Slinc. We bevelen het
+        programma aan omdat het aansluit bij onze visie op gezond afvallen, en
+        deze pagina kan een samenwerkings- of aanbevelingslink naar Slinc
+        bevatten.
+      </p>
+    </div>
+
+    <div class="slinc-promo__beeld" aria-hidden="true">
+      <svg viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="160" cy="160" r="150" fill="#ffe4d1"/>
+        <circle cx="160" cy="160" r="112" fill="#fff" opacity="0.6"/>
+        <g transform="translate(78 92)">
+          <rect x="0" y="40" width="164" height="110" rx="18" fill="#4a8768"/>
+          <rect x="16" y="0" width="132" height="56" rx="14" fill="#ec8b5e"/>
+          <circle cx="82" cy="95" r="34" fill="#fff"/>
+          <path d="M66 95a16 16 0 1 1 32 0 16 16 0 0 1-32 0Z" fill="#ec8b5e"/>
+          <path d="M60 63c6-10 56-10 62 0" stroke="#fff" stroke-width="6" stroke-linecap="round"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<style>
+  .slinc-promo {
+    background: linear-gradient(135deg, #fff6ee, #ffe9d6);
+    border-radius: 28px;
+    padding: 56px;
+    border: 1px solid #f4d6b8;
+  }
+
+  .slinc-promo__inner {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+
+  .badge--licht {
+    background: #fff;
+    color: var(--kleur-koraal-donker);
+  }
+
+  .slinc-promo__acties {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin: 24px 0 18px;
+  }
+
+  .slinc-promo__disclosure {
+    font-size: 0.82rem;
+    color: var(--kleur-tekst-zacht);
+    margin: 0;
+  }
+
+  .slinc-promo__beeld svg {
+    width: 100%;
+    height: auto;
+  }
+
+  .slinc-promo--compact {
+    padding: 32px;
+  }
+
+  .slinc-promo--compact .slinc-promo__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .slinc-promo--compact .slinc-promo__beeld {
+    display: none;
+  }
+
+  @media (max-width: 860px) {
+    .slinc-promo { padding: 32px 24px; }
+    .slinc-promo__inner {
+      grid-template-columns: 1fr;
+    }
+    .slinc-promo__beeld {
+      order: -1;
+      max-width: 220px;
+      margin: 0 auto;
+    }
+  }
+</style>

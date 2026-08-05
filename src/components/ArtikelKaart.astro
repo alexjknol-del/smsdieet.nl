@@ -1,0 +1,84 @@
+---
+interface Props {
+  titel: string;
+  samenvatting: string;
+  href: string;
+  datum: Date;
+  categorie: string;
+}
+const { titel, samenvatting, href, datum, categorie } = Astro.props;
+const datumTekst = datum.toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+
+<article class="artikel-kaart">
+  <span class="artikel-kaart__categorie">{categorie}</span>
+  <h3><a href={href}>{titel}</a></h3>
+  <p>{samenvatting}</p>
+  <div class="artikel-kaart__voet">
+    <time datetime={datum.toISOString()}>{datumTekst}</time>
+    <a class="artikel-kaart__lees" href={href}>Lees het artikel &rarr;</a>
+  </div>
+</article>
+
+<style>
+  .artikel-kaart {
+    background: var(--kleur-wit);
+    border: 1px solid var(--kleur-rand);
+    border-radius: var(--radius);
+    padding: 26px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .artikel-kaart__categorie {
+    display: inline-block;
+    align-self: flex-start;
+    background: var(--kleur-groen-licht);
+    color: var(--kleur-groen-donker);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 4px 10px;
+    border-radius: 999px;
+    margin-bottom: 14px;
+  }
+
+  .artikel-kaart h3 {
+    font-size: 1.15rem;
+    margin-bottom: 8px;
+  }
+
+  .artikel-kaart h3 a {
+    text-decoration: none;
+    color: var(--kleur-groen-donker);
+  }
+
+  .artikel-kaart h3 a:hover {
+    text-decoration: underline;
+  }
+
+  .artikel-kaart p {
+    color: var(--kleur-tekst-zacht);
+    font-size: 0.95rem;
+    flex-grow: 1;
+  }
+
+  .artikel-kaart__voet {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.82rem;
+    color: var(--kleur-tekst-zacht);
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--kleur-rand);
+  }
+
+  .artikel-kaart__lees {
+    color: var(--kleur-koraal-donker);
+    font-weight: 700;
+    text-decoration: none;
+  }
+</style>
