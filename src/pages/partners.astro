@@ -14,6 +14,41 @@ const partners = [
     beschrijving:
       'Een van de grootste Nederlandse platforms over gezondheid, met artikelen over voeding, leefstijl en welzijn, geschreven en gecontroleerd door redacteuren en vakspecialisten.',
   },
+  {
+    naam: 'Tatanka',
+    url: 'https://www.tatanka.nl/nl/shroomshop/magic-mushroom-grow-kits/',
+    beschrijving:
+      'Tatanka is een Nederlandse smartshop met paddo growkits en smartshopproducten, met uitleg per soort en een overzicht van het aanbod.',
+    anchor: 'Paddo mushroom growkit',
+  },
+  {
+    naam: 'Smartific',
+    url: 'https://smartific.nl/joint-roller/',
+    beschrijving:
+      'Smartific is een Nederlandse smartshop met magic truffels, growkits en smartshopproducten, inclusief productinformatie per artikel.',
+    anchor: 'Joint roller kopen',
+  },
+  {
+    naam: 'The Headshop',
+    url: 'https://www.headshop.nl/nl/super-bali-gold-kratom/',
+    beschrijving:
+      'The Headshop is een Nederlandse headshop met kratom en smartshopproducten, met een uitgebreid overzicht per soort en sterkte.',
+    anchor: 'Super Bali Gold Kratom',
+  },
+  {
+    naam: 'Paddo.shop',
+    url: 'https://www.paddo.shop/mexican-paddo-growkit/',
+    beschrijving:
+      'Paddo.shop is een Nederlandse webshop gespecialiseerd in paddo growkits, met uitleg per kweekset en kweekinstructies.',
+    anchor: 'Mexican paddo',
+  },
+  {
+    naam: 'Magictruffels.shop',
+    url: 'https://www.magictruffels.shop/',
+    beschrijving:
+      'Magictruffels.shop is een Nederlandse webshop voor magic truffels, met een overzicht per soort en de werking ervan.',
+    anchor: 'mushrocks truffels',
+  },
 ];
 ---
 
@@ -41,7 +76,7 @@ const partners = [
           <h3>{partner.naam}</h3>
           <p>{partner.beschrijving}</p>
           <a class="knop knop--outline" href={partner.url} target="_blank" rel="noopener">
-            Bezoek {partner.naam}
+            {partner.anchor || `Bezoek ${partner.naam}`}
           </a>
         </div>
       ))}
